@@ -6,6 +6,8 @@ option go_package = "go-crud-app/proto;proto";
 
 service UserService {
   rpc GetUserById (UserRequest) returns (UserResponse);
+  rpc CreateTask (CreateTaskRequest) returns (TaskResponse);
+  rpc CreateMultipleTasks (TaskList) returns (TaskList);
 }
 
 message UserRequest {
@@ -17,4 +19,20 @@ message UserResponse {
   string name = 2;
   string email = 3;
   int32 age = 4;
+}
+
+message CreateTaskRequest {
+  string user_id = 1;
+  string title = 2;
+}
+
+message TaskResponse {
+  string id = 1;
+  string user_id = 2;
+  string title = 3;
+  string status = 4;
+}
+
+message TaskList {
+  repeated CreateTaskRequest tasks = 1;
 }

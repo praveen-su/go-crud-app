@@ -10,7 +10,6 @@ import (
 	"go.mongodb.org/mongo-driver/bson"
 )
 
-/* CREATE USER */
 func CreateUser(c *gin.Context) {
 	var user User
 	c.BindJSON(&user)
